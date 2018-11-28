@@ -1,0 +1,37 @@
+<div class="">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Turno</th>
+        <th scope="col">Numero oficio</th>
+        <th scope="col">Fecha oficio</th>
+        <th scope="col">Fecha recepcion</th>
+        <th scope="col">Nombre promovente</th>
+        <th scope="col">Numero juicio</th>
+        <th scope="col">Turnado</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tbody>
+        <% @datum.each do |data| %>
+          <tr>
+            <td><%= data.turno %></td>
+            <td><%= data.numero_oficio %></td>
+            <td><%= data.fecha_oficio %></td>
+            <td><%= data.fecha_recepcion %></td>
+            <td><%= data.nombre_promovente %></td>
+            <td><%= data.numero_juicio %></td>
+            <td><%= data.turnado %></td>
+            <td><%= link_to 'Mostrar', datum, class:'btn btn-info text-white'%></td>
+            <td><%= link_to 'Editar', edit_datum_path(data), class:'btn btn-warning' %></td>
+            <% if current_user.email.include?('admin')%>
+              <td><%= link_to 'Destroy', datum, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </tbody>
+  </table>
+
+</div>

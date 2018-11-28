@@ -1,0 +1,27 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+a,a:visited {
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+  background: none;
+}
+.new_user {
+  font-size: 1.2rem;
+  width: 27%;
+  background: #eee;
+  color: gray;
+  transform: translate(32vw, 10vh);
+  box-shadow: 7px 8px 18px #888888;
+}
+
+#pdf-link {
+  text-decoration: underline;
+  color: blue;
+}

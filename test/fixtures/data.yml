@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  turno: 1
+  numero_oficio: 1
+  fecha_oficio: 2018-11-04
+  fecha_recepcion: 2018-11-04
+  nombre_promovente: MyString
+  numero_juicio: MyString
+  turnado: MyString
+
+two:
+  turno: 1
+  numero_oficio: 1
+  fecha_oficio: 2018-11-04
+  fecha_recepcion: 2018-11-04
+  nombre_promovente: MyString
+  numero_juicio: MyString
+  turnado: MyString

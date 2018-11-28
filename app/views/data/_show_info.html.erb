@@ -1,0 +1,45 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Turno</th>
+      <th scope="col">Numero oficio</th>
+      <th scope="col">Fecha oficio</th>
+      <th scope="col">Fecha recepcion</th>
+      <th scope="col">Nombre promovente</th>
+      <th scope="col">Numero juicio</th>
+      <th scope="col">Numero correspondencia</th>
+      <th scope="col">Numero pensión</th>
+      <th scope="col">Sala</th>
+      <th scope="col">Tipo expediente</th>
+      <th scope="col">Numero expediente</th>
+      <th scope="col">observaciones</th>
+      <th scope="col">Envio juridico</th>
+      <th scope="col">Monto cheque</th>
+      <th scope="col">Ajuste cuota</th>
+      <th scope="col">Anexo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tbody>
+        <tr>
+          <td><%= @datum.turno %></td>
+          <td><%= @datum.numero_oficio %></td>
+          <td><%= @datum.fecha_oficio %></td>
+          <td><%= @datum.fecha_recepcion %></td>
+          <td><%= @datum.nombre_promovente %></td>
+          <td><%= @datum.numero_juicio %></td>
+          <td><%= @datum.numero_correspondencia %></td>
+          <td><%= @datum.numero_pension %></td>
+          <td><%= @datum.sala %></td>
+          <td><%= @datum.tipo_expediente %></td>
+          <td><%= @datum.numero_expediente %></td>
+          <td><%= @datum.observaciones %></td>
+          <td><%= @datum.envio_juridico %></td>
+          <td><%= @datum.monto_cheque %></td>
+          <td><%= @datum.ajuste_cuota %></td>
+          <td><%= link_to "Anexo.pdf", @datum.documento.url, target: '_blank', id:'pdf-link' %></td>
+        </tr>
+    </tbody>
+  </tbody>
+</table>

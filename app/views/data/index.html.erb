@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="resultados"></div>
+
+<%= form_tag '/search/create', remote: true, id: 'search-form', method: :get do %>
+  <div class="row">
+    <%= text_field :keyword, nil, placeholder: 'Buscador', class:'form-control col-md-4'%>
+    <%= button_tag :Buscar, class:'btn btn-secondary'%>
+  </div>
+<% end %>
+
+<%= link_to 'Nuevo registro', new_datum_path, class:'btn btn-primary text-white mb-5 float-right'%>
+<table class="table">
+<thead>
+  <tr>
+    <th scope="col">Turno</th>
+    <th scope="col">Numero oficio</th>
+    <th scope="col">Fecha oficio</th>
+    <th scope="col">Fecha recepcion</th>
+    <th scope="col">Nombre promovente</th>
+    <th scope="col">Numero juicio</th>
+    <th scope="col">Turnado</th>
+    <th colspan="3"></th>
+  </tr>
+</thead>
+<tbody>
+  <tbody>
+    <% @data.each do |datum| %>
+      <tr>
+        <td><%= datum.turno %></td>
+        <td><%= datum.numero_oficio %></td>
+        <td><%= datum.fecha_oficio %></td>
+        <td><%= datum.fecha_recepcion %></td>
+        <td><%= datum.nombre_promovente %></td>
+        <td><%= datum.numero_juicio %></td>
+        <td><%= datum.turnado %></td>
+        <td><%= link_to 'Editar', edit_datum_path(datum), class:'btn btn-warning' %></td>
+        <% if current_user.email.include?('admin')%>
+          <td><%= link_to 'Mostrar', datum, class:'btn btn-info text-white'%></td>
+          <td><%= link_to 'Eliminar', datum, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger text-white' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</tbody>
+</table>
+
+<br>

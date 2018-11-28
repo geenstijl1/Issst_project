@@ -1,0 +1,9 @@
+<nav class="navbar navbar-light text-white" style="background-color: rgb(2, 185, 167);">
+ <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/1/13/LOGO_ISSSTE.svg", size:'128x64'%>
+  <%if user_signed_in?%>
+    <p>Bienvenido <%= current_user.name %></p>
+    <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
+  <%else%>
+    <%= link_to "Iniciar sesión", new_user_session_path%>
+  <%end%>
+</nav>
