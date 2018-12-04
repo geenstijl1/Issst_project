@@ -34,10 +34,10 @@
         <td><%= datum.nombre_promovente %></td>
         <td><%= datum.numero_juicio %></td>
         <td><%= datum.turnado %></td>
-        <td><%= link_to 'Editar', edit_datum_path(datum), class:'btn btn-warning' %></td>
+        <td><%= link_to 'Editar', edit_datum_path(datum), class:'btn btn-secondary text-white' %></td>
         <% if current_user.email.include?('admin')%>
-          <td><%= link_to 'Mostrar', datum, class:'btn btn-info text-white'%></td>
-          <td><%= link_to 'Eliminar', datum, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger text-white' %></td>
+          <td><%= link_to 'Mostrar', datum, class:'btn btn-secondary text-white'%></td>
+          <td><%= link_to 'Eliminar', datum, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-secondary text-white' %></td>
         <% end %>
       </tr>
     <% end %>

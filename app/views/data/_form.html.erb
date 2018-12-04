@@ -1,32 +1,32 @@
 <%= form_with(model: datum, local: true) do |form| %>
-<% if current_user.email.include?('admin')%>
-  <% if datum.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(datum.errors.count, "error") %>
+  <% if current_user.email.include?('admin')%>
+    <% if datum.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(datum.errors.count, "error") %>
         prohibited this datum from being saved:</h2>
-      <ul>
-        <% datum.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Turno</th>
-        <th scope="col">Numero oficio</th>
-        <th scope="col">Fecha oficio</th>
-        <th scope="col">Fecha recepcion</th>
-        <th scope="col">Nombre promovente</th>
-        <th scope="col">Numero juicio</th>
-        <th scope="col">Turnado</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
+        <ul>
+          <% datum.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Turno</th>
+          <th scope="col">Numero oficio</th>
+          <th scope="col">Fecha oficio</th>
+          <th scope="col">Fecha recepcion</th>
+          <th scope="col">Nombre promovente</th>
+          <th scope="col">Numero juicio</th>
+          <th scope="col">Turnado</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
       <tbody>
-            <tr>
+        <tbody>
+          <tr>
             <td><%= @datum.turno %></td>
             <td><%= @datum.numero_oficio %></td>
             <td><%= @datum.fecha_oficio %></td>
@@ -34,73 +34,76 @@
             <td><%= @datum.nombre_promovente %></td>
             <td><%= @datum.numero_juicio %></td>
             <td><%= @datum.turnado %></td>
-            </tr>
+          </tr>
+        </tbody>
       </tbody>
-    </tbody>
-  </table>
-  <hr/>
+    </table>
+    <hr/>
 
-  <div class="row">
-    <div class="field col-md-6">
-      <%= form.label :numero_correspondencia %><br>
-      <%= form.text_field :numero_correspondencia, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-6">
-      <%= form.label :numero_pension %><br>
-      <%= form.number_field :numero_pension, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-6">
-      <%= form.label :sala %><br>
-      <%= form.text_field :sala, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-6">
-      <%= form.label :tipo_expediente %><br>
-      <%= form.text_field :tipo_expediente, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-6">
-      <%= form.label :numero_expediente %><br>
-      <%= form.text_field :numero_expediente, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-6">
-      <%= form.label :observaciones %><br>
-      <%= form.text_area :observaciones, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-6">
-      <%= form.label :letra %><br>
-      <%= form.text_field :letra, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-6">
-      <%= form.label :termino %><br>
-      <%= form.date_select :termino, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-4">
-      <%= form.label :envio_juridico %><br>
-      <%= form.date_select :envio_juridico, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-4">
-      <%= form.label :monto_cheque %><br>
-      <%= form.number_field :monto_cheque, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-4">
-      <%= form.label :ajuste_cuota %><br>
-      <%= form.number_field :ajuste_cuota, class:'col-md-12 form-control' %>
-    </div>
-    <div class="field col-md-4">
-      <%= form.label :Anexo %><br>
-      <%= form.file_field :documento, class:'col-md-12 form-control' %>
-    </div>
-    <div class="actions col-md-4">
-      <br>
-      <%= form.submit "Enviar", class:'btn btn-primary col-md-12 form-control'%>
-    </div>
-
-  </div>
-
-<% else %>
-
-  <div class="row">
     <div class="row">
       <div class="field col-md-3">
+        <%= form.label :numero_correspondencia %><br>
+        <%= form.text_field :numero_correspondencia, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-3">
+        <%= form.label :numero_pension %><br>
+        <%= form.number_field :numero_pension, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-3">
+        <%= form.label :sala %><br>
+        <!-- <%= form.text_field :sala, class:'col-md-12 form-control' %> -->
+        <%= form.select :sala, options_for_select(['1ra', '2da', '3ra'])%>
+      </div>
+      <div class="field col-md-3">
+        <%= form.label :tipo_expediente %><br>
+        <!-- <%= form.text_field :tipo_expediente, class:'col-md-12 form-control' %> -->
+        <%= form.select :tipo_expediente, options_for_select(['Original', 'Provicional', 'Copia certificada']) %>
+      </div>
+      <div class="field col-md-3">
+        <%= form.label :numero_expediente %><br>
+        <%= form.text_field :numero_expediente, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-4">
+        <%= form.label :observaciones %><br>
+        <%= form.text_area :observaciones, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-2">
+        <%= form.label :letra %><br>
+        <%= form.text_field :letra, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-3">
+        <%= form.label :termino %><br>
+        <%= form.date_select :termino, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-3">
+        <%= form.label :envio_juridico %><br>
+        <%= form.date_select :envio_juridico, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-2">
+        <%= form.label :monto_cheque %><br>
+        <%= form.number_field :monto_cheque, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-2">
+        <%= form.label :ajuste_cuota %><br>
+        <%= form.number_field :ajuste_cuota, class:'col-md-12 form-control' %>
+      </div>
+      <div class="field col-md-4">
+        <%= form.label :Anexo %><br>
+        <%= form.file_field :documento, class:'col-md-12 form-control' %>
+      </div>
+      <div class="actions col-md-12">
+        <div class="float-left">
+          <%= link_to 'Atras', data_path, class:'btn btn-secondary text-white col-md-12' %>
+        </div>
+        <div class="float-right">
+          <%= form.submit "Enviar", class:'btn btn-primary col-md-12 form-control'%>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="row">
+      <div class="field col-md-2">
         <%= form.label :turno %><br>
         <%= form.number_field :turno, class:'col-md-12 form-control' %>
       </div>
@@ -122,7 +125,7 @@
 
       <div class="field col-md-6">
         <%= form.label :nombre_promovente %><br>
-        <%= form.text_field :nombre_promovente, class:'col-md-12 form-control' %>
+        <%= form.text_field :nombre_promovente, placeholder: 'Apellidos/Nombre(s)', class:'col-md-12 form-control' %>
       </div>
 
       <div class="field col-md-3">
@@ -135,9 +138,13 @@
         <%= form.text_field :turnado, class:'col-md-12 form-control'%>
         <!-- <%= form.select :turnado, options_for_select(['1', '2', '11'])%> -->
       </div>
-      <div class="actions col-md-3">
-        <br>
-        <%= form.submit "Enviar", class:'btn btn-primary col-md-12 form-control'%>
+      <div class="actions col-md-12">
+        <div class="float-left">
+          <%= link_to 'Atras', data_path, class:'btn btn-secondary text-white col-md-12' %>
+        </div>
+        <div class="float-right">
+          <%= form.submit "Enviar", class:'btn btn-primary col-md-12 form-control'%>
+        </div>
       </div>
     </div>
   <% end %>
